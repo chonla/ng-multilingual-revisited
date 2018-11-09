@@ -3,7 +3,7 @@ import { TranslationService } from '../services/translation.service';
 import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: 'translate'
+  selector: 'translate, [translate]'
 })
 export class TranslateDirective implements OnInit, OnDestroy {
   private translationChanged$: Subscription;
