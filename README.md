@@ -1,27 +1,52 @@
-# NgTranslation
+# Angular Multilingual Revisited
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+This project is to show an alternative simple way to handle multilingual in Angular application. The original version of this is at [https://github.com/chonla/ng-multilingual-example](https://github.com/chonla/ng-multilingual-example).
 
-## Development server
+## Translation Table
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Just add new translations to ```src/app/i18n``` directory and import it to ```src/app/i18n/translation-table.ts```. See ```src/app/i18n/en.ts``` for example.
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### As Directive
 
-## Build
+```
+<translate>hello_world</translate>
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### As Pipe
 
-## Running unit tests
+I use impure pipe to implement this. This may cause some issue as stated in [document](https://angular.io/guide/pipes).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+{{ 'hello_world' | translate }}
+```
 
-## Running end-to-end tests
+#### As Service
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+constructor(private translator: TranslatorService) {}
 
-## Further help
+translate() {
+  const result = this.translator.translate('hello_world');
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Service Methods
+
+*setLanguage(id: string)*
+
+To set language. Parameter id is defined as in ```src/app/i18n/translations.ts```.
+
+*getLanguage(): string*
+
+To get current language.
+
+*translate(text: string): string*
+
+To translate the given text. If not found in translation table, text is returned.
+
+*translationChanged(): Observable<any>*
+
+To hook to an event when translation table or language is changed.
+
