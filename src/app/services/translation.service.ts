@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-// import { TranslationTable } from '../i18n/translation-table';
+import { TranslationTable } from '../i18n/translation-table';
 import { Observable, empty, of, Subject } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class TranslationService {
   private subject: Subject<any>;
 
   constructor() {
-    this.subject = new Subject<any>();
-    // this.translationTable = TranslationTable;
+    this.subject = new Subject<void>();
+    this.translationTable = TranslationTable;
     this.setLanguage(environment.default.language);
   }
 
@@ -40,7 +40,7 @@ export class TranslationService {
     return this.translationTable[this.currentLanguage][key];
   }
 
-  translationChanged(): Observable<any> {
+  translationChanged(): Observable<void> {
     return this.subject.asObservable();
   }
 }

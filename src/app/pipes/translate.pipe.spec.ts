@@ -1,5 +1,7 @@
 import { TranslatePipe } from './translate.pipe';
 import { TranslationService } from '../services/translation.service';
+import { Subject, empty } from 'rxjs';
+import { ITranslationService } from '../services/translation.service.interface';
 
 describe('TranslatePipe', () => {
   it('create an instance', () => {
@@ -9,9 +11,12 @@ describe('TranslatePipe', () => {
   });
 
   it('should return data from translation service', () => {
-    const translator = jasmine.createSpyObj('TranslationService', {
-      'translate': 'okok'
-    });
+    const MockTranslationService = jest.fn<ITranslationService​>(() => ({
+      translate: jest.fn().mockImplementation(() => {
+        return 'okok';
+      })
+    }));
+    const translator = new MockTranslationService();
     const pipe = new TranslatePipe(translator);
     const result = pipe.transform('1234');
     expect(result).toEqual('okok');
