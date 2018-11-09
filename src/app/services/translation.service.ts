@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { TranslationTable } from '../i18n/translation-table';
+// import { TranslationTable } from '../i18n/translation-table';
 import { Observable, empty, of, Subject } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class TranslationService {
 
   constructor() {
     this.subject = new Subject<any>();
-    this.translationTable = TranslationTable;
+    // this.translationTable = TranslationTable;
     this.setLanguage(environment.default.language);
   }
 
