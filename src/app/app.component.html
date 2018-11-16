@@ -2,7 +2,11 @@
   <h2>Translated by element directive</h2>
   <translate>hello</translate>&nbsp;<translate>what_is_your_name</translate>
   <h2>Translated by attribute directive</h2>
-  <span translate>hello</span>&nbsp;<span translate>what_is_your_name</span>
+  <span translate>hello</span>&nbsp;<span translate>what_is_your_name</span><br>
+  <select>
+    <option value="1" translate>hello</option>
+    <option value="2" translate>what_is_your_name</option>
+  </select>
   <h2>Translated by impure pipe</h2>
   {{ 'hello' | translate }} {{ 'what_is_your_name' | translate }}
   <br>

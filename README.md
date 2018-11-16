@@ -12,6 +12,10 @@ Just add new translations to ```src/app/i18n``` directory and import it to ```sr
 
 ```
 <translate>hello_world</translate>
+<span translate>hello_world</span>
+<select>
+  <option value="hello" translate>hello_world</option>
+</select>
 ```
 
 #### As Pipe
