@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TranslateDirective } from './directives/translate.directive';
 import { TranslatePipe } from './pipes/translate.pipe';
+import { TranslationService } from './services/translation.service';
 
 @NgModule({
   declarations: [

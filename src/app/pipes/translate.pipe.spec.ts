@@ -1,7 +1,5 @@
 import { TranslatePipe } from './translate.pipe';
 import { TranslationService } from '../services/translation.service';
-import { Subject, empty } from 'rxjs';
-import { ITranslationService } from '../services/translation.service.interface';
 
 describe('TranslatePipe', () => {
   it('create an instance', () => {
@@ -11,7 +9,7 @@ describe('TranslatePipe', () => {
   });
 
   it('should return data from translation service', () => {
-    const MockTranslationService = jest.fn<ITranslationService​>(() => ({
+    const MockTranslationService = jest.fn<TranslationService​>(() => ({
       translate: jest.fn().mockImplementation(() => {
         return 'okok';
       })

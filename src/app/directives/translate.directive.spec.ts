@@ -1,12 +1,11 @@
 import { TranslateDirective } from './translate.directive';
 import { ElementRef } from '@angular/core';
 import { TranslationService } from '../services/translation.service';
-import { ITranslationService } from '../services/translation.service.interface';
 import { Subject } from 'rxjs';
 
 describe('TranslateDirective', () => {
   it('should create an instance', () => {
-    const MockTranslationService = jest.fn<ITranslationService​>(() => ({
+    const MockTranslationService = jest.fn<TranslationService​>(() => ({
       translate: jest.fn().mockImplementation(() => {
         return 'okok';
       }),

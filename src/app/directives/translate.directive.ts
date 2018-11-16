@@ -1,6 +1,6 @@
 import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ITranslationService } from '../services/translation.service.interface';
+import { TranslationService } from '../services/translation.service';
 
 @Directive({
   selector: 'translate, [translate]'
@@ -10,7 +10,7 @@ export class TranslateDirective implements OnInit, OnDestroy {
   private key: string;
 
   constructor(private el: ElementRef,
-    private translator: ITranslationService) { }
+    private translator: TranslationService) { }
 
   ngOnInit(): void {
     this.key = this.el.nativeElement.innerText;
