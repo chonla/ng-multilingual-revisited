@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { TranslationTable } from '../i18n/translation-table';
-import { Observable, empty, of, Subject } from 'rxjs';
+import { TranslationTable, Dictionary } from '../i18n/translation-table';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
   private currentLanguage: string;
-  private translationTable: { [lang:string]: { [key:string]: string }};
+  private translationTable: Dictionary​​;
   private subject: Subject<any>;
 
   constructor() {
@@ -28,7 +28,7 @@ export class TranslationService {
     return this.currentLanguage;
   }
 
-  setTranslationTable(table: { [lang:string]: { [key:string]: string }}) {
+  setTranslationTable(table: Dictionary) {
     this.translationTable = table;
   }
 
